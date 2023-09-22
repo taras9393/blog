@@ -1,3 +1,9 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+ root 'statpages#home'
+ get 'one' => 'statpages#one_post'
+ get 'userss' => 'statpages#users_all'
+ get 'profilee' => 'statpages#user_profile'
+ get 'registration' => 'statpages#registration'
+ get 'login' => 'statpages#login'
 end
