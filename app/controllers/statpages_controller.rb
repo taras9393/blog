@@ -8,10 +8,6 @@ class StatpagesController < ApplicationController
   def user_profile
   end
 
-  def registration
-  end
-
-  def login
-  end
+  
 
 end
