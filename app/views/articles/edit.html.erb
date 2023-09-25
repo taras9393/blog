@@ -1,2 +1,17 @@
-<h1>Articles#edit</h1>
-<p>Find me in app/views/articles/edit.html.erb</p>
+<div class="container mt-3 mb-3">
+  <div class="my-frm">
+    <h2 class="text-center">Edit this article</h2><br>
+
+
+  <%= simple_form_for(@article, html: { multipart: true }) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content, as: :text %>
+    <div class = "mb-2">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+    </div>
+    <%= f.button :submit, class: "btn btn-primary my-btn" %>
+  <% end %>
+
+
+  </div>
+</div>

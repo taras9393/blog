@@ -1,2 +1,70 @@
-<h1>Articles#index</h1>
-<p>Find me in app/views/articles/index.html.erb</p>
+
+<!-- Page content-->
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8">
+            <div class="row">
+              <% for i in (0..(@articles.length - 1)) %>
+                <div class="col-lg-6">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                      <% if @articles[i].picture? %>
+                        <%= image_tag(@articles[i].picture.url, height: "350px", class: "card-img-top") %>
+                      <% else %>
+                        <%= image_tag "unknown.png", height: "350px", class: "card-img-top" %>
+                      <% end %>
+                        <div class="card-body">
+                            <div class="small text-muted"><em>Create <%= @articles[i].created_at.strftime("%d.%m.%Y") %></em></div>
+                            <h2 class="card-title h4"><%= @articles[i].title %></h2>
+                            <p class="card-text"><%= @articles[i].content.first(150) %></p>
+                            <%= link_to "Read full article →", article_path(@articles[i].id), class: "btn btn-primary" %>
+                            <div class="art-author"><b>Author:</b> <em><%= link_to (@articles[i].user.nickname), "#" %></em></div>
+                            <%= link_to "Delete this article", article_path(@articles[i].id), method: :delete, class: "btn btn-danger" %>
+                            <%= link_to "Edit article", edit_article_path(@articles[i].id), class: "btn btn-info" %>
+                        </div>
+                    </div>
+                    </div>
+                    <% end %>
+             </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <%= render 'layouts/categories' %>
+                </div>
+
+                <%= render 'layouts/admin_widget' %>
+
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Side Widget</div>
+                    <div class="card-body">You can put anything you want inside
+                      of these side widgets. They are easy to use, and feature
+                      the Bootstrap 5 card component!</div>
+
+                      <div id="SinoptikInformer" style="width:415px;" class="SinoptikInformer type5c1">
+                        <div class="siHeader"><div class="siLh"><div class="siMh">
+                          <a onmousedown="siClickCount();"
+                          class="siLogo" href="https://ua.sinoptik.ua/" target="_blank" rel="nofollow"
+                          title="Погода"> </a>Погода <span id="siHeader"></span></div></div></div><div class="siBody"><a onmousedown="siClickCount();"
+                          href="https://ua.sinoptik.ua/погода-івано-франківськ"
+                          title="Погода в Івано-Франківську" target="_blank"><div class="siCity">
+                            <div class="siCityName"><span>Івано-Франківськ</span></div><div
+                            id="siCont0" class="siBodyContent"><div class="siLeft"><div class="siTerm">
+                            </div><div class="siT" id="siT0"></div><div id="weatherIco0"></div></div>
+                            <div class="siInf"><p>вологість: <span id="vl0"></span></p><p>тиск: <span
+                            id="dav0"></span></p><p>вітер: <span
+                          id="wind0"></span></p></div></div></div></a><div class="siLinks">Погода на
+                          10 днів від <a href="https://ua.sinoptik.ua/погода-івано-франківськ/10-днів"
+                          title="Погода на 10 днів" target="_blank" onmousedown="siClickCount();">sinoptik.ua</a>
+                          </div></div><div class="siFooter"><div class="siLf"><div class="siMf"></div></div>
+                        </div></div><script type="text/javascript" charset="UTF-8"
+                        src="//sinoptik.ua/informers_js.php?title=4&amp;wind=2&amp;cities=303009582&amp;lang=ua"></script>
+
+                </div>
+            </div>
+        </div>
+    </div>

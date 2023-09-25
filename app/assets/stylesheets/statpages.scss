@@ -1,4 +1,26 @@
 
+.art-author {
+  margin: 5px;
+  padding: 2px;
+  background: #f4f8ff;
+}
+
+.art-author a {
+  color: #06661e;
+  font-weight: bold;
+}
+
+.catg a {
+  color: #2e4880;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.catg a:hover {
+  background: #dee7f9;
+}
+
 .green-notice {
   color: green;
 }

@@ -1,8 +1,23 @@
-<div class="container mt-3 mb-3">
-  <% @users.each do |u| %>
-    <ul class="list-group">
-      <li class="list-group-item text-center">All users list</li>
-      <li class="list-group-item list-group-item-info"><%= u.email %></li>
-    </ul>
-  <% end %>
-</div>
+  <div class="container mt-3">
+    <h2 class="text-center">List of users</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-light">
+          <th>ID</th>
+          <th>Nickname</th>
+          <th>Email</th>
+          <th>On site since: </th>
+        </tr>
+      </thead>
+      <% @users.each do |u| %>
+      <tbody>
+        <tr class="table-info">
+          <td><%= u.id %></td>
+          <td><%= u.nickname %></td>
+          <td><%= u.email %></td>
+          <td><%= u.created_at.strftime("%d-%m-%Y") %></td>
+        </tr>
+      </tbody>
+        <% end %>
+    </table>
+  </div>
