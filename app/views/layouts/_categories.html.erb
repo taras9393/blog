@@ -1,13 +1,12 @@
+<% @categories = Category.all %>
 <div class="card-body">
     <div class="row">
         <div class="col-sm-12">
-            <ul class="list-unstyled mb-0 text-center">
-                <li class="catg"><a href="#!">JavaScript</a></li>
-                <li class="catg"><a href="#!">CSS</a></li>
-                <li class="catg"><a href="#!">Nature</a></li>
-                <li class="catg"><a href="#!">Science</a></li>
-                <li class="catg"><a href="#!">Buildings</a></li>
-                <li><a href="#!">View more categories</a></li>
+            <ul class="list-unstyled mb-0 text-justify ml-100">
+              <% @categories.first(6).each do |category| %>
+                <li class="catg"><%= link_to category.name, categories_path %></li>
+                <% end %>
+                <li><%= link_to "View more categories", categories_path %></li>
             </ul>
         </div>
     </div>

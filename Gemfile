@@ -17,6 +17,7 @@ gem 'bootstrap'
 gem 'jquery-rails'
 gem 'devise'
 gem 'simple_form'
+gem "font-awesome-sass", "~> 6.4.2"
 
 gem 'carrierwave'
 gem 'mini_magick'

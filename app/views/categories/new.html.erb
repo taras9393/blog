@@ -1,0 +1,9 @@
+<div class="container mt-3 mb-3">
+  <div class="my-frm">
+    <h2 class="text-center">Add new category</h2><br>
+      <%= simple_form_for(@category) do |f| %>
+        <%= f.input :name %>
+        <%= f.button :submit, class: "btn btn-primary my-btn" %>
+      <% end %>
+  </div>
+</div>

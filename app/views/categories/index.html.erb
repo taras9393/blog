@@ -1,0 +1,15 @@
+<% @categories.sort_by{|c| c.name.downcase }.each do |category| %>
+<ul>
+  <li><%= link_to "#{category.name}", category_path(category.id), class: "btn btn-info" %>
+   <span class="badge badge-primary badge-pill bg-primary"><%= category.articles.count %></span>
+   <%= link_to edit_category_path(category.id) do %>
+    <i class="fa fa-pen aria-hidden="true""></i>
+   <% end %>
+
+   <%= link_to category_path(category.id), method: :delete do %>
+   <i class="fa fa-trash" aria-hidden="true"></i>
+   <% end %>
+  </li>
+</ul>
+<% end %>
+<%= link_to "Add new category", new_category_path, class: "btn btn-warning btn-xl rounded-pill mt-5" %>

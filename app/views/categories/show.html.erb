@@ -1,51 +1,35 @@
-<!-- Page header with logo and tagline-->
-<header class="py-5 bg-light border-bottom mb-4">
-    <div class="container">
-        <div class="text-center my-5">
-            <h1 class="fw-bolder">Welcome to ProBlogger, <%= current_user&.nickname || "Guest" %>!</h1>
-            <p class="lead mb-0"><%= render 'layouts/welcome_text' %></p>
-        </div>
-    </div>
-</header>
+
 <!-- Page content-->
 <div class="container">
     <div class="row">
+
         <!-- Blog entries-->
         <div class="col-lg-8">
-            <!-- Featured blog post-->
-            <div class="card mb-4">
-              <% if @articles[0].picture? %>
-                <%= image_tag(@articles[0].picture.url, height: "400px", class: "card-img-top") %>
-              <% else %>
-                <%= image_tag "unknown.png", height: "400px", class: "card-img-top" %>
-              <% end %>
-                <div class="card-body">
-                    <div class="small text-muted"><em>Create <%= @articles[0].created_at.strftime("%d.%m.%Y") %></em></div>
-                    <h2 class="card-title"><%= @articles[0].title %></h2>
-                    <p class="card-text"><%= @articles[0].content.first(150) %></p>
-                    <%= link_to "Read full article →", article_path(@articles[0].id), class: "btn btn-primary" %>
-                </div>
-            </div>
-            <!-- Nested row for non-featured blog posts-->
             <div class="row">
-              <% for i in (1..2) %>
+              <% if @articles.empty? %>
+                <h2 class="text-center">No articles in this category at this moment</h2>
+              <% end %>
+              <% for i in (0..(@articles.length - 1)) %>
                 <div class="col-lg-6">
                     <!-- Blog post-->
                     <div class="card mb-4">
                       <% if @articles[i].picture? %>
                         <%= image_tag(@articles[i].picture.url, height: "400px", class: "card-img-top") %>
                       <% else %>
-                        <%= image_tag "unknown.png", height: "400px", class: "card-img-top" %>
+                        <%= image_tag "unknown.png", height: "350px", class: "card-img-top" %>
                       <% end %>
                         <div class="card-body">
                             <div class="small text-muted"><em>Create <%= @articles[i].created_at.strftime("%d.%m.%Y") %></em></div>
                             <h2 class="card-title h4"><%= @articles[i].title %></h2>
                             <p class="card-text"><%= @articles[i].content.first(150) %></p>
                             <%= link_to "Read full article →", article_path(@articles[i].id), class: "btn btn-primary" %>
+                            <div class="art-author"><b>Author:</b> <em><%= link_to (@articles[i].user.nickname), "#" %></em></div>
+                            <%= link_to "Delete this article", article_path(@articles[i].id), method: :delete, class: "btn btn-danger" %>
+                            <%= link_to "Edit article", edit_article_path(@articles[i].id), class: "btn btn-info" %>
                         </div>
-                      </div>
+                     </div>
                     </div>
-                <% end %>
+                    <% end %>
              </div>
             </div>
 
@@ -57,16 +41,14 @@
                 </div>
 
                 <%= render 'layouts/admin_widget' %>
-                
+
                 <!-- Side widget-->
                 <div class="card mb-4">
                     <div class="card-header">Side Widget</div>
                     <div class="card-body">You can put anything you want inside
                       of these side widgets. They are easy to use, and feature
                       the Bootstrap 5 card component!</div>
-
                       <%= render 'layouts/sinoptik' %>
-
                 </div>
             </div>
         </div>

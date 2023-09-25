@@ -9,6 +9,10 @@
     <div class = "mb-2">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
     </div>
+    <div class = "mb-2">
+    <%= f.label :category_id, 'Please, choose category' %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+    </div>
     <%= f.button :submit, class: "btn btn-primary my-btn" %>
   <% end %>
 
