@@ -21,7 +21,7 @@
               <ul class="dropdown-menu text-small">
                 <li><%= link_to "New post", new_article_path, class: "dropdown-item" %></li>
                 <li><%= link_to "Settings", edit_user_registration_path, class: "dropdown-item" %></li>
-                <li><%= link_to "My profile", "#", class: "dropdown-item" %></li>
+                <li><%= link_to "My profile", profile_path, class: "dropdown-item" %></li>
                 <li><hr class="dropdown-divider"></li>
                 <li><%= link_to "Sign out", destroy_user_session_path, method: :delete, data: { confirm: "You want to exit?" }, class: "dropdown-item" %></li>
               </ul>

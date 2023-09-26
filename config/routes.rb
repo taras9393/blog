@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   root 'statpages#home'
   get 'one' => 'statpages#one_post'
   get 'userss' => 'statpages#users_all'
-  get 'profilee' => 'statpages#user_profile'
+  get 'profile' => 'users#profile'
 
 
 end

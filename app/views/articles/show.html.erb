@@ -9,7 +9,7 @@
                     <h1 class="fw-bolder mb-1"><%= @article.title %></h1>
                     <!-- Post meta content-->
                     <div class="text-muted fst-italic mb-2">Posted on <%= @article.created_at.strftime("%d.%m.%Y") %>
-                      by <%= link_to @article.user.nickname, "#" %></div>
+                      by <%= link_to @article.user.nickname, user_path(@article.user.id) %></div>
                     <!-- Post categories-->
                     <div class="badge bg-secondary text-decoration-none link-light"><%= @article.category&.name || "Unknown" %></div>
                 </header>
