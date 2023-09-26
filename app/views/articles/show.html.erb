@@ -11,7 +11,7 @@
                     <div class="text-muted fst-italic mb-2">Posted on <%= @article.created_at.strftime("%d.%m.%Y") %>
                       by <%= link_to @article.user.nickname, "#" %></div>
                     <!-- Post categories-->
-                    <div class="badge bg-secondary text-decoration-none link-light"><%= @article.category&.name || "Hueta" %></div>
+                    <div class="badge bg-secondary text-decoration-none link-light"><%= @article.category&.name || "Unknown" %></div>
                 </header>
                 <!-- Preview image figure-->
                 <figure class="mb-4">
