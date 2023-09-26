@@ -12,7 +12,11 @@
       <% @users.each do |u| %>
       <tbody>
         <tr class="table-info">
-          <td><%= u.id %></td>
+          <td><%= u.id %>
+            <%= link_to user_path(u.id), method: :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </td>
           <td><%= u.nickname %></td>
           <td><%= u.email %></td>
           <td><%= u.created_at.strftime("%d-%m-%Y") %></td>

@@ -12,4 +12,8 @@
   </li>
 </ul>
 <% end %>
-<%= link_to "Add new category", new_category_path, class: "btn btn-warning btn-xl rounded-pill mt-5" %>
+<% if current_user.admin? %>
+  <%= link_to "Add new category", new_category_path, class: "btn btn-warning btn-xl rounded-pill mt-5" %>
+<% else %>
+  <%= link_to "Offer new category", "#", class: "btn btn-warning btn-xl rounded-pill mt-5" %>
+<% end %>

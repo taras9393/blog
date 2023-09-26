@@ -19,6 +19,7 @@ gem 'devise'
 gem 'simple_form'
 gem "font-awesome-sass", "~> 6.4.2"
 
+gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'
 

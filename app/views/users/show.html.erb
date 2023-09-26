@@ -4,7 +4,7 @@
         <div class="text-center my-5">
             <h1 class="fw-bolder">Welcome to My Blog </h1>
             <p class="lead mb-0"><em>User blog description</em></p>
-            <p class="lead mb-0">Mauris dui justo, dignissim eget urna at, elementum 
+            <p class="lead mb-0">Mauris dui justo, dignissim eget urna at, elementum
               sem. Morbi porta nec lorem id pharetra. Fusce vel ex nec ligula
               faucibus bibendum sed in quam. Aenean vehicula erat eget convallis
               tincidunt. In suscipit risus nunc, ultrices ornare risus dignissim
@@ -39,10 +39,12 @@
                             <p class="card-text"><%= @user_articles[i].content.first(150) %></p>
                             <%= link_to "Read full article →", article_path(@user_articles[i].id), class: "btn btn-primary" %>
                             <div class="art-author"><b>Author:</b> <em><%= link_to (@user_articles[i].user.nickname), user_path(@user_articles[i].user.id) %></em></div>
+                              <% if can? :destroy, @user_articles[i] %>
                             <%= link_to "Delete this article", article_path(@user_articles[i].id), method: :delete, class: "btn btn-danger" %>
                             <%= link_to "Edit article", edit_article_path(@user_articles[i].id), class: "btn btn-info" %>
+                              <% end %>
                         </div>
-                    </div>
+                      </div>
                     </div>
                     <% end %>
              </div>

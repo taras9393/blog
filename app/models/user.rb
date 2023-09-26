@@ -6,5 +6,5 @@ class User < ApplicationRecord
 
 
   validates :nickname, length: {maximum: 15}
-  has_many :articles
+  has_many :articles, dependent: :destroy
 end

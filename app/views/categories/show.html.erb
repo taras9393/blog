@@ -24,8 +24,10 @@
                             <p class="card-text"><%= @articles[i].content.first(150) %></p>
                             <%= link_to "Read full article →", article_path(@articles[i].id), class: "btn btn-primary" %>
                             <div class="art-author"><b>Author:</b> <em><%= link_to (@articles[i].user.nickname), "#" %></em></div>
+                              <% if can? :destroy, @articles[i] %>
                             <%= link_to "Delete this article", article_path(@articles[i].id), method: :delete, class: "btn btn-danger" %>
                             <%= link_to "Edit article", edit_article_path(@articles[i].id), class: "btn btn-info" %>
+                              <% end %>
                         </div>
                      </div>
                     </div>

@@ -1,4 +1,6 @@
 class CategoriesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
+  before_action :user_admin, except: [:index, :show]
 
   def index
     @categories = Category.all
@@ -41,9 +43,15 @@ class CategoriesController < ApplicationController
     redirect_to categories_path, notice: 'Category succesfully deleted'
   end
 
+
+private
   def category_params
     params.require(:category).permit(:name)
   end
 
-
+  def user_admin
+    unless current_user.admin?
+    redirect_to root_path, alert: 'Access denied'
+    end
+  end
 end

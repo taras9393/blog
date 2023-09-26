@@ -6,8 +6,6 @@ Rails.application.routes.draw do
   resources :categories
 
   root 'statpages#home'
-  get 'one' => 'statpages#one_post'
-  get 'userss' => 'statpages#users_all'
   get 'profile' => 'users#profile'
 
 

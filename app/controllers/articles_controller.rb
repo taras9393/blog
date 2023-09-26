@@ -1,4 +1,5 @@
 class ArticlesController < ApplicationController
+  before_action :authenticate_user!, except: [:index, :show]
 
   def new
     @article = Article.new
@@ -15,6 +16,9 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    unless can? :edit, @article
+      redirect_to articles_path, alert: 'You are not author!!!'
+    end
   end
 
   def update
@@ -36,8 +40,12 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
-    @article.destroy
-    redirect_to articles_path, notice: "Succesfully destroyed"
+    if can? :destroy, @article
+      @article.destroy
+      redirect_to articles_path, notice: 'Succesfully destroyed'
+    else
+      redirect_to articles_path, alert: 'You are not author!!!'
+    end
   end
 
   private
