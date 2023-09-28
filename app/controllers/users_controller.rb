@@ -5,7 +5,7 @@ class UsersController < ApplicationController
   def show
     @user = User.find(params[:id])
     #@articles = current_user.articles.all
-    @user_articles = @user.articles.all
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 6)
   end
 
   def index
@@ -13,7 +13,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @articles = current_user.articles.all
+    @articles = current_user.articles.paginate(page: params[:page], per_page: 6)
   end
 
   def destroy

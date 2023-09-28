@@ -15,10 +15,12 @@ gem 'sass-rails', '~> 5.0'
 
 gem 'bootstrap'
 gem 'jquery-rails'
-gem 'devise'
 gem 'simple_form'
 gem "font-awesome-sass", "~> 6.4.2"
+gem 'will_paginate', '3.1.7'
+gem 'will_paginate-bootstrap-style'
 
+gem 'devise'
 gem 'cancancan'
 gem 'carrierwave'
 gem 'mini_magick'

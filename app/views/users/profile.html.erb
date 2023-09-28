@@ -5,6 +5,7 @@
         <!-- Blog entries-->
         <div class="col-lg-8">
             <div class="row">
+              <%= will_paginate @articles, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
               <% for i in (0..(@articles.length - 1)) %>
                 <div class="col-lg-6">
                     <!-- Blog post-->
