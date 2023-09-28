@@ -4,6 +4,7 @@ class CategoriesController < ApplicationController
 
   def index
     @categories = Category.all
+    @propositions = Proposition.all
   end
 
   def show

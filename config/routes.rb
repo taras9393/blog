@@ -4,9 +4,11 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :show, :destroy]
   resources :articles
   resources :categories
+  resources :propositions do
+    put 'accept'
+  end
 
   root 'statpages#home'
   get 'profile' => 'users#profile'
-
-
+  put 'accept' => 'propositions#accept'
 end
