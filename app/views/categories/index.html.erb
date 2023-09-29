@@ -1,29 +1,32 @@
-<%# will_paginate @categories, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+<%# will_paginate @categories.sort_by{|c| c.name.downcase }, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
 <% @categories.sort_by{|c| c.name.downcase }.each do |category| %>
 <ul>
   <li><%= link_to "#{category.name}", category_path(category.id), class: "btn btn-info" %>
    <span class="badge badge-primary badge-pill bg-primary"><%= category.articles.count %></span>
-   <% if current_user.admin? %>
-   <%= link_to edit_category_path(category.id) do %>
-    <i class="fa fa-pen aria-hidden="true""></i>
-   <% end %>
-
-   <%= link_to category_path(category.id), method: :delete do %>
-   <i class="fa fa-trash" aria-hidden="true"></i>
-   <% end %>
-   <% end %>
+   <% if user_signed_in? %>
+    <% if current_user.admin? %>
+      <%= link_to edit_category_path(category.id) do %>
+        <i class="fa fa-pen aria-hidden="true""></i>
+      <% end %>
+      <%= link_to category_path(category.id), method: :delete do %>
+        <i class="fa fa-trash" aria-hidden="true"></i>
+      <% end %>
+     <% end %>
+    <% end %>
   </li>
 </ul>
 <% end %>
-<% if current_user.admin? %>
-  <%= link_to "Add new category", new_category_path, class: "btn btn-warning btn-xl rounded-pill mt-5" %>
-<% else %>
-  <%= link_to "Offer new category", new_proposition_path, class: "btn btn-warning btn-xl rounded-pill mt-5" %>
-<% end %>
 
-<% if current_user.admin? %>
-<hr>
-<div class = "proposition">
+<% if user_signed_in? %>
+  <% if current_user.admin? %>
+    <%= link_to "Add new category", new_category_path, class: "btn btn-warning btn-xl rounded-pill mt-2 mb-2" %>
+  <% else %>
+    <%= link_to "Offer new category", new_proposition_path, class: "btn btn-warning btn-xl rounded-pill mt-2 mb-2" %>
+  <% end %>
+
+  <% if current_user.admin? %>
+  <hr>
+  <div class = "proposition">
   <h4 class="head-proposition text-center">Proposition of categories from users: </h4>
   <hr>
   <% @propositions.each do |p| %>
@@ -34,6 +37,6 @@
      <hr>
    </ul>
    <% end %>
-</div>
-
+ </div>
+ <% end %>
 <% end %>

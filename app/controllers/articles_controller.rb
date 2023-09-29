@@ -48,6 +48,15 @@ class ArticlesController < ApplicationController
     end
   end
 
+  def vote
+    @article = Article.find(params[:id])
+    if current_user.liked? @article
+      @article.unliked_by current_user
+    else
+      @article.liked_by current_user
+    end
+  end
+
   private
 
     def article_params

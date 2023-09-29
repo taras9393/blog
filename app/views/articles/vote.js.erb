@@ -1,0 +1,7 @@
+<% if current_user.liked? @article %>
+  $('.votingBtn > a').addClass('liked');
+<% else %>
+  $('.votingBtn > a').removeClass('liked');
+<% end %>
+
+$('.votingBtn .voteCount').html('<%= @article.get_likes.size %>');

@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :users, only: [:index, :show, :destroy]
-  resources :articles
+  resources :articles do
+    member do
+      put 'vote'
+    end
+  end
   resources :categories
   resources :propositions do
     put 'accept'

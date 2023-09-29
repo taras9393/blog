@@ -1,5 +1,8 @@
 class PropositionsController < ApplicationController
 
+  before_action :authenticate_user!
+  before_action :user_admin, only: [:index, :destroy, :accept]
+
   def index
     @propositions = Proposition.all
   end
@@ -32,6 +35,12 @@ class PropositionsController < ApplicationController
   private
   def proposition_params
     params.require(:proposition).permit(:name)
+  end
+
+  def user_admin
+    unless current_user.admin?
+    redirect_to root_path, alert: 'Access denied'
+    end
   end
 
 end

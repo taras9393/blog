@@ -29,6 +29,9 @@
                             <%= link_to "Edit article", edit_article_path(@articles[i].id), class: "btn btn-info" %>
                               <% end %>
                         </div>
+                        <div class="votingBtn">
+                             <span class="voteCount my-vote">Rating: <b><%= @articles[i].get_likes.count %></b></span>
+                        </div>
                      </div>
                     </div>
                     <% end %>
@@ -42,15 +45,12 @@
                     <%= render 'layouts/categories' %>
                 </div>
 
-                <%= render 'layouts/admin_widget' %>
+                <%= render 'layouts/top_articles' %>
 
                 <!-- Side widget-->
                 <div class="card mb-4">
                     <div class="card-header">Side Widget</div>
-                    <div class="card-body">You can put anything you want inside
-                      of these side widgets. They are easy to use, and feature
-                      the Bootstrap 5 card component!</div>
-                      <%= render 'layouts/sinoptik' %>
+                    <div class="card-body"> <%= render 'layouts/sinoptik' %> </div>
                 </div>
             </div>
         </div>
