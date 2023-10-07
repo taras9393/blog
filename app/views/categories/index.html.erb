@@ -32,7 +32,7 @@
   <% @propositions.each do |p| %>
    <ul>
      <li class="btn btn-info"><%= p.name %></li>
-     <%= link_to "Accept suggestion", "#", method: :put, class: "btn btn-sm btn-outline-success", type: "button" %>
+     <%= link_to "Accept suggestion", accept_proposition_path(p.id), method: :put, class: "btn btn-sm btn-outline-success", type: "button" %>
      <%= link_to "Decline", proposition_path(p.id), method: :delete, class: "btn btn-sm btn-outline-danger", type: "button" %>
      <hr>
    </ul>

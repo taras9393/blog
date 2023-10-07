@@ -9,10 +9,11 @@ Rails.application.routes.draw do
   end
   resources :categories
   resources :propositions do
+    member do
     put 'accept'
+    end  
   end
 
   root 'statpages#home'
   get 'profile' => 'users#profile'
-  put 'accept' => 'propositions#accept'
 end

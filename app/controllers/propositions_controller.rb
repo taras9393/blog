@@ -27,9 +27,10 @@ class PropositionsController < ApplicationController
   end
 
   def accept
-    @categories = Category.all
     @proposition = Proposition.find(params[:id])
-    @categories.to_a.push(@proposition.name)
+    Category.create(name: @proposition.name)
+    @proposition.destroy
+    redirect_to categories_path, notice: 'You accept this proposition'
   end
 
   private

@@ -1,3 +1,4 @@
+<% random_password = (('a'..'z').to_a + (0..9).to_a + ('A'..'Z').to_a).shuffle.first(9).join %>
 <div class="container mt-3 mb-3">
   <div class="my-frm">
 <h2 class="text-center">Sign up</h2>
@@ -19,8 +20,9 @@
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
+    <% end %>
     <%= f.password_field :password, class: "form-control" %>
+    <b>You can try this password: </b><%= random_password %>
   </div>
 
   <div class="mb-3">

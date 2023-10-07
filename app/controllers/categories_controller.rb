@@ -5,6 +5,7 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @propositions = Proposition.all
+    #@category = Category.find(params[:id])
   end
 
   def show
