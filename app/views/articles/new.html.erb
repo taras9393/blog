@@ -12,6 +12,10 @@
     <%= f.label :category_id, 'Please, choose category' %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name %>
     </div>
+    <div class = "mb-2">
+    <%= f.label :published_at, 'Choose, when it should be published(-3):' %><br>
+    <%= f.datetime_field :published_at %>
+    </div>
     <%= f.button :submit, class: "btn btn-primary my-btn" %>
   <% end %>
 

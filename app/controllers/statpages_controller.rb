@@ -1,6 +1,6 @@
 class StatpagesController < ApplicationController
   def home
-    @articles = Article.all
+    @articles = Article.where('published_at <= ?', DateTime.now)
   end
 
   def users_all

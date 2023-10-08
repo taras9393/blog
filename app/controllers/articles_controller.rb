@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.paginate(page: params[:page], per_page: 6)
+    @articles = Article.where('published_at <= ?', DateTime.now).paginate(page: params[:page], per_page: 6)
   end
 
   def show
@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
   private
 
     def article_params
-      params.require(:article).permit(:title, :content, :picture, :user_id, :category_id)
+      params.require(:article).permit(:title, :content, :picture, :user_id, :category_id, :published_at)
     end
 
 end

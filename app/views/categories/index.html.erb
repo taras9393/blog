@@ -2,7 +2,7 @@
 <% @categories.sort_by{|c| c.name.downcase }.each do |category| %>
 <ul>
   <li><%= link_to "#{category.name}", category_path(category.id), class: "btn btn-info" %>
-   <span class="badge badge-primary badge-pill bg-primary"><%= category.articles.count %></span>
+   <span class="badge badge-primary badge-pill bg-primary"><%= category.articles.where('published_at <= ?', DateTime.now).count %></span>
    <% if user_signed_in? %>
     <% if current_user.admin? %>
       <%= link_to edit_category_path(category.id) do %>

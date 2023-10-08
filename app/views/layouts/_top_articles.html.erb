@@ -1,4 +1,4 @@
-<% @articles = Article.all %>
+<% @articles = Article.where('published_at <= ?', DateTime.now) %>
 <div class="card mb-4">
     <div class="card-header">Top articles</div>
     <div class="card-body">

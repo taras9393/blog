@@ -10,7 +10,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @articles = @category.articles.all
+    @articles = @category.articles.where('published_at <= ?', DateTime.now)
   end
 
   def new
@@ -56,4 +56,5 @@ private
     redirect_to root_path, alert: 'Access denied'
     end
   end
+  
 end
