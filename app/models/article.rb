@@ -11,4 +11,13 @@ class Article < ApplicationRecord
   validates :user_id, presence: true
   validates :category_id, presence: true
   validates :published_at, presence: true
+
+  def self.search(search)
+    if search
+      where('title LIKE ?', "%#{search}%")
+    else
+      Article.all
+    end
+  end
+
 end

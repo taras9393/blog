@@ -2,6 +2,16 @@
 <!-- Page content-->
 <div class="container">
     <div class="row">
+
+      <div>
+        <%= form_for articles_path, :method => 'get' do %>
+          <p>
+            <%= text_field_tag :search, params[:search] %>
+            <%= submit_tag "Find article", :name => nil, class: "btn btn-success me-1" %>
+          </p>
+        <% end %>
+      </div>
+
       <%= will_paginate @articles, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
         <!-- Blog entries-->
         <div class="col-lg-8">

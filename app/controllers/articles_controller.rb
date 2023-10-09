@@ -31,7 +31,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.where('published_at <= ?', DateTime.now).paginate(page: params[:page], per_page: 6)
+    @articles = Article.where('published_at <= ?', DateTime.now).paginate(page: params[:page], per_page: 6).search(params[:search])
   end
 
   def show

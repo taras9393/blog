@@ -5,7 +5,6 @@ class CategoriesController < ApplicationController
   def index
     @categories = Category.all
     @propositions = Proposition.all
-    #@category = Category.find(params[:id])
   end
 
   def show
@@ -56,5 +55,5 @@ private
     redirect_to root_path, alert: 'Access denied'
     end
   end
-  
+
 end
