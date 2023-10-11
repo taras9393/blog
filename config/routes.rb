@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :propositions do
     member do
     put 'accept'
-    end  
+    end
   end
 
   root 'statpages#home'

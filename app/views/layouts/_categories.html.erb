@@ -2,12 +2,18 @@
 <div class="card-body">
     <div class="row">
         <div class="col-sm-12">
+          <% if @categories.empty? %>
+          <ul class="list-unstyled mb-0 text-justify ml-100">
+            <li class="catg">No categories at this moment</li>
+          </ul>
+          <% else %>
             <ul class="list-unstyled mb-0 text-justify ml-100">
               <% @categories.first(6).each do |category| %>
                 <li class="catg"><%= link_to category.name, category_path(category.id) %></li>
                 <% end %>
                 <li><%= link_to "View more categories", categories_path %></li>
             </ul>
+            <% end %>
         </div>
     </div>
 </div>

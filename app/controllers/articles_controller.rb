@@ -31,11 +31,12 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.where('published_at <= ?', DateTime.now).paginate(page: params[:page], per_page: 6).search(params[:search])
+    @articles = Article.published.paginate(page: params[:page], per_page: 6).search(params[:search])
   end
 
   def show
     @article = Article.find(params[:id])
+    redirect_to articles_path if @article.published_at.future?
   end
 
   def destroy

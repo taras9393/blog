@@ -14,7 +14,7 @@
           <div class="col-lg-8">
             <% if @articles.empty? %>
               <h2>No articles at this moment</h2>
-              <% else %>
+              <% end %>
               <!-- Featured blog post-->
                 <div class="card mb-4">
                   <% if @articles[0].picture? %>
@@ -32,34 +32,7 @@
                          <span class="voteCount my-vote">Rating: <b><%= @articles[0].get_likes.count %></b></span>
                     </div>
                 </div>
-              <!-- Nested row for non-featured blog posts-->
-              <div class="row">
-
-                <% for i in (1..2) %>
-                  <div class="col-lg-6">
-                      <!-- Blog post-->
-                      <div class="card mb-4">
-                        <% if @articles[i].picture? %>
-                          <%= image_tag(@articles[i].picture.url, height: "400px", class: "card-img-top") %>
-                        <% else %>
-                          <%= image_tag "unknown.png", height: "400px", class: "card-img-top" %>
-                        <% end %>
-                          <div class="card-body">
-                              <div class="small text-muted"><em>Create <%= @articles[i].created_at.strftime("%d.%m.%Y") %></em></div>
-                              <h2 class="card-title h4"><%= @articles[i].title %></h2>
-                              <p class="card-text"><%= @articles[i].content.first(150) %></p>
-                              <%= link_to "Read full article →", article_path(@articles[i].id), class: "btn btn-primary" %>
-                          </div>
-                          <div class="votingBtn">
-                               <span class="voteCount my-vote">Rating: <b><%= @articles[i].get_likes.count %></b></span>
-                          </div>
-                        </div>
-                      </div>
-                   <% end %>
-               </div>
-               <% end %>
               </div>
-
             <div class="col-lg-4">
                 <!-- Categories widget-->
                 <div class="card mb-4">

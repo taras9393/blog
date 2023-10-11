@@ -1,4 +1,5 @@
 class Article < ApplicationRecord
+  scope :published, -> { where('published_at <= ?', DateTime.now) }
 
   belongs_to :user
   belongs_to :category

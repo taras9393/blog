@@ -1,7 +1,9 @@
 
-<!-- Page content-->
 <div class="container">
     <div class="row">
+      <% if @articles.empty? %>
+      <h3>You still have not articles</h3><%= link_to "Create now!", new_article_path %>
+      <% end %>
         <!-- Blog entries-->
         <div class="col-lg-8">
             <div class="row">
@@ -28,9 +30,9 @@
                              <span class="voteCount my-vote">Rating: <b><%= @articles[i].get_likes.count %></b></span>
                         </div>
                     </div>
-                    </div>
-                    <% end %>
-             </div>
+                   </div>
+                  <% end %>
+              </div>
             </div>
 
             <div class="col-lg-4">
