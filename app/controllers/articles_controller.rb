@@ -16,6 +16,7 @@ class ArticlesController < ApplicationController
 
   def edit
     @article = Article.find(params[:id])
+    redirect_to articles_path if @article.published_at.future?
     unless can? :edit, @article
       redirect_to articles_path, alert: 'You are not author!!!'
     end
@@ -31,7 +32,7 @@ class ArticlesController < ApplicationController
   end
 
   def index
-    @articles = Article.published.paginate(page: params[:page], per_page: 6).search(params[:search])
+    @articles = Article.published.paginate(page: params[:page], per_page: 6).search(params[:search]).sort_by_created_at
   end
 
   def show
@@ -41,6 +42,7 @@ class ArticlesController < ApplicationController
 
   def destroy
     @article = Article.find(params[:id])
+    redirect_to articles_path if @article.published_at.future?
     if can? :destroy, @article
       @article.destroy
       redirect_to articles_path, notice: 'Succesfully destroyed'

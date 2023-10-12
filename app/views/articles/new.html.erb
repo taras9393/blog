@@ -5,17 +5,17 @@
   <%= simple_form_for(@article, html: { multipart: true }) do |f| %>
     <%= f.input :title %>
     <%= f.input :content, as: :text %>
-    <div class = "mb-2">
+  <div class = "mb-2">
     <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
-    </div>
-    <div class = "mb-2">
+  </div>
+  <div class = "mb-2">
     <%= f.label :category_id, 'Please, choose category' %><br>
     <%= f.collection_select :category_id, Category.all, :id, :name %>
-    </div>
-    <div class = "mb-2">
+  </div>
+  <div class = "mb-2">
     <%= f.label :published_at, 'Choose, when it should be published (UTC +00:00):' %><br>
     <%= f.datetime_field :published_at %>
-    </div>
+  </div>
     <%= f.button :submit, class: "btn btn-primary my-btn" %>
   <% end %>
 

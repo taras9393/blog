@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :user_admin, only: [:destroy, :index]
   def show
     @user = User.find(params[:id])
-    @user_articles = @user.articles.paginate(page: params[:page], per_page: 6).where('published_at <= ?', DateTime.now)
+    @user_articles = @user.articles.paginate(page: params[:page], per_page: 6).published.sort_by_created_at
   end
 
   def index
@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def profile
-    @articles = current_user.articles.paginate(page: params[:page], per_page: 6).where('published_at <= ?', DateTime.now)
+    @articles = current_user.articles.paginate(page: params[:page], per_page: 6).published.sort_by_created_at
   end
 
   def destroy

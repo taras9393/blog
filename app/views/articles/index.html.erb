@@ -16,28 +16,28 @@
         <!-- Blog entries-->
         <div class="col-lg-8">
             <div class="row">
-              <% for i in (0..(@articles.length - 1)) %>
+              <% @articles.each do |article| %>
                 <div class="col-lg-6">
                     <!-- Blog post-->
                     <div class="card mb-4">
-                      <% if @articles[i].picture? %>
-                        <%= image_tag(@articles[i].picture.url, height: "350px", class: "card-img-top") %>
+                      <% if article.picture? %>
+                        <%= image_tag(article.picture.url, height: "350px", class: "card-img-top") %>
                       <% else %>
                         <%= image_tag "unknown.png", height: "350px", class: "card-img-top" %>
                       <% end %>
                         <div class="card-body">
-                            <div class="small text-muted"><em>Create <%= @articles[i].created_at.strftime("%d.%m.%Y") %></em></div>
-                            <h2 class="card-title h4"><%= @articles[i].title %></h2>
-                            <p class="card-text"><%= @articles[i].content.first(150) %></p>
-                            <%= link_to "Read full article →", article_path(@articles[i].id), class: "btn btn-primary" %>
-                            <div class="art-author"><b>Author:</b> <em><%= link_to (@articles[i].user.nickname), user_path(@articles[i].user.id) %></em></div>
-                              <% if can? :destroy, @articles[i] %>
-                            <%= link_to "Delete this article", article_path(@articles[i].id), method: :delete, class: "btn btn-danger" %>
-                            <%= link_to "Edit article", edit_article_path(@articles[i].id), class: "btn btn-info" %>
+                            <div class="small text-muted"><em>Create <%= article.created_at.strftime("%d.%m.%Y") %></em></div>
+                            <h2 class="card-title h4"><%= article.title %></h2>
+                            <p class="card-text"><%= article.content.first(150) %></p>
+                            <%= link_to "Read full article →", article_path(article.id), class: "btn btn-primary" %>
+                            <div class="art-author"><b>Author:</b> <em><%= link_to (article.user.nickname), user_path(article.user.id) %></em></div>
+                              <% if can? :destroy, article %>
+                            <%= link_to "Delete this article", article_path(article.id), method: :delete, class: "btn btn-danger" %>
+                            <%= link_to "Edit article", edit_article_path(article.id), class: "btn btn-info" %>
                               <% end %>
                         </div>
                         <div class="votingBtn">
-                             <span class="voteCount my-vote">Rating: <b><%= @articles[i].get_likes.count %></b></span>
+                             <span class="voteCount my-vote">Rating: <b><%= article.get_likes.count %></b></span>
                         </div>
                       </div>
                     </div>

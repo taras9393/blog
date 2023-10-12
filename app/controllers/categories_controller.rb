@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @articles = @category.articles.where('published_at <= ?', DateTime.now)
+    @articles = @category.articles.published
   end
 
   def new

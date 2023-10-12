@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :categories
   resources :propositions do
     member do
-    put 'accept'
+      put 'accept'
     end
   end
 
