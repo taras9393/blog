@@ -1,0 +1,27 @@
+  <div class="container mt-3">
+    <h2 class="text-center">List of users</h2>
+    <table class="table table-bordered">
+      <thead>
+        <tr class="table-light">
+          <th>ID</th>
+          <th>Nickname</th>
+          <th>Email</th>
+          <th>On site since: </th>
+        </tr>
+      </thead>
+      <% @users.each do |u| %>
+      <tbody>
+        <tr class="table-info">
+          <td><%= u.id %>
+            <%= link_to user_path(u.id), method: :delete do %>
+            <i class="fa fa-trash" aria-hidden="true"></i>
+            <% end %>
+          </td>
+          <td><%= u.nickname %></td>
+          <td><%= u.email %></td>
+          <td><%= u.created_at.strftime("%d-%m-%Y") %></td>
+        </tr>
+      </tbody>
+        <% end %>
+    </table>
+  </div>

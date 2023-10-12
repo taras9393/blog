@@ -1,0 +1,73 @@
+<!-- Page header with logo and tagline-->
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Welcome to My Blog </h1>
+            <p class="lead mb-0"><em>User blog description</em></p>
+            <p class="lead mb-0">Mauris dui justo, dignissim eget urna at, elementum
+              sem. Morbi porta nec lorem id pharetra. Fusce vel ex nec ligula
+              faucibus bibendum sed in quam. Aenean vehicula erat eget convallis
+              tincidunt. In suscipit risus nunc, ultrices ornare risus dignissim
+              non. Nunc diam tortor, finibus vulputate rhoncus ultrices, rutrum
+              sed mauris. Pellentesque ante mauris, ultricies sed pharetra sit
+              amet, laoreet et lacus. Donec erat ante, facilisis aliquam dapibus ac,
+              fermentum quis nulla. In bibendum elit non nibh elementum, et pulvinar
+              est porttitor. Praesent ac elit vitae arcu eleifend efficitur.
+              Duis accumsan convallis quam, quis varius nisl fermentum sit amet.
+              Nullam sollicitudin hendrerit elit venenatis lacinia. </p>
+        </div>
+    </div>
+</header>
+
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+        <div class="col-lg-8">
+            <div class="row">
+              <%= will_paginate @user_articles, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
+              <% @user_articles.each do |article| %>
+                <div class="col-lg-6">
+                    <!-- Blog post-->
+                    <div class="card mb-4">
+                      <% if article.picture? %>
+                        <%= image_tag(article.picture.url, height: "350px", class: "card-img-top") %>
+                      <% else %>
+                        <%= image_tag "unknown.png", height: "350px", class: "card-img-top" %>
+                      <% end %>
+                        <div class="card-body">
+                            <div class="small text-muted"><em>Create <%= article.created_at.strftime("%d.%m.%Y") %></em></div>
+                            <h2 class="card-title h4"><%= article.title %></h2>
+                            <p class="card-text"><%= article.content.first(150) %></p>
+                            <%= link_to "Read full article →", article_path(article.id), class: "btn btn-primary" %>
+                            <div class="art-author"><b>Author:</b> <em><%= link_to (article.user.nickname), user_path(article.user.id) %></em></div>
+                              <% if can? :destroy, article %>
+                            <%= link_to "Delete this article", article_path(article.id), method: :delete, class: "btn btn-danger" %>
+                            <%= link_to "Edit article", edit_article_path(article.id), class: "btn btn-info" %>
+                              <% end %>
+                        </div>
+                        <div class="votingBtn">
+                             <span class="voteCount my-vote">Rating: <b><%= article.get_likes.count %></b></span>
+                        </div>
+                      </div>
+                    </div>
+                    <% end %>
+             </div>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <%= render 'layouts/categories' %>
+                </div>
+
+                <%= render 'layouts/top_articles' %>
+
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Side Widget</div>
+                    <div class="card-body"> <%= render 'layouts/sinoptik' %> </div>
+                </div>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,23 @@
+<div class="container mt-3 mb-3">
+  <div class="my-frm">
+    <h2 class="text-center">Add new article</h2><br>
+
+  <%= simple_form_for(@article, html: { multipart: true }) do |f| %>
+    <%= f.input :title %>
+    <%= f.input :content, as: :text %>
+  <div class = "mb-2">
+    <%= f.file_field :picture, accept: 'image/jpeg,image/gif,image/png' %>
+  </div>
+  <div class = "mb-2">
+    <%= f.label :category_id, 'Please, choose category' %><br>
+    <%= f.collection_select :category_id, Category.all, :id, :name %>
+  </div>
+  <div class = "mb-2">
+    <%= f.label :published_at, 'Choose, when it should be published (UTC +00:00):' %><br>
+    <%= f.datetime_field :published_at %>
+  </div>
+    <%= f.button :submit, class: "btn btn-primary my-btn" %>
+  <% end %>
+
+  </div>
+</div>

@@ -1,3 +1,19 @@
 Rails.application.routes.draw do
-  # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
+
+  devise_for :users
+  resources :users, only: [:index, :show, :destroy]
+  resources :articles do
+    member do
+      put 'vote'
+    end
+  end
+  resources :categories
+  resources :propositions do
+    member do
+      put 'accept'
+    end
+  end
+
+  root 'statpages#home'
+  get 'profile' => 'users#profile'
 end

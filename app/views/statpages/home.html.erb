@@ -1,0 +1,51 @@
+<!-- Page header with logo and tagline-->
+<header class="py-5 bg-light border-bottom mb-4">
+    <div class="container">
+        <div class="text-center my-5">
+            <h1 class="fw-bolder">Welcome to ProBlogger, <%= current_user&.nickname || "Guest" %>!</h1>
+            <p class="lead mb-0"><%= render 'layouts/welcome_text' %></p>
+        </div>
+    </div>
+</header>
+<!-- Page content-->
+<div class="container">
+    <div class="row">
+        <!-- Blog entries-->
+          <div class="col-lg-8">
+            <% if @articles.empty? %>
+              <h2>No articles at this moment</h2>
+              <% else %>
+              <!-- Featured blog post-->
+                <div class="card mb-4">
+                  <% if @articles[0].picture? %>
+                    <%= image_tag(@articles[0].picture.url, height: "400px", class: "card-img-top") %>
+                  <% else %>
+                    <%= image_tag "unknown.png", height: "400px", class: "card-img-top" %>
+                  <% end %>
+                    <div class="card-body">
+                        <div class="small text-muted"><em>Create <%= @articles[0].created_at.strftime("%d.%m.%Y") %></em></div>
+                        <h2 class="card-title"><%= @articles[0].title %></h2>
+                        <p class="card-text"><%= @articles[0].content.first(250) %></p>
+                        <%= link_to "Read full article →", article_path(@articles[0].id), class: "btn btn-primary" %>
+                    </div>
+                    <div class="votingBtn">
+                         <span class="voteCount my-vote">Rating: <b><%= @articles[0].get_likes.count %></b></span>
+                    </div>
+                </div>
+              <% end %>
+              </div>
+            <div class="col-lg-4">
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <%= render 'layouts/categories' %>
+                </div>
+                <%= render 'layouts/top_articles' %>
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Side Widget</div>
+                    <div class="card-body"> <%= render 'layouts/sinoptik' %> </div>
+                </div>
+            </div>
+        </div>
+    </div>

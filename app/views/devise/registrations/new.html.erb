@@ -1,0 +1,40 @@
+<% random_password = (('a'..'z').to_a + (0..9).to_a + ('A'..'Z').to_a).shuffle.first(9).join %>
+<div class="container mt-3 mb-3">
+  <div class="my-frm">
+<h2 class="text-center">Sign up</h2>
+
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "devise/shared/error_messages", resource: resource %>
+
+  <div class="mb-3">
+    <%= f.label :nickname %><br />
+    <%= f.text_field :nickname, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :email %><br />
+    <%= f.email_field :email, autofocus: true, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password %>
+    <% if @minimum_password_length %>
+    <em>(<%= @minimum_password_length %> characters minimum)</em>
+    <% end %>
+    <%= f.password_field :password, class: "form-control" %>
+    <b>You can try this password: </b><%= random_password %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.submit "Sign up", class: "btn btn-primary my-btn" %>
+  </div>
+<% end %>
+
+<%= render "devise/shared/links" %>
+  </div>
+</div>

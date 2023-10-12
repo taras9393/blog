@@ -1,0 +1,60 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-8">
+            <!-- Post content-->
+            <article>
+                <!-- Post header-->
+                <header class="mb-4">
+                    <!-- Post title-->
+                    <h1 class="fw-bolder mb-1"><%= @article.title %></h1>
+                    <!-- Post meta content-->
+                    <div class="text-muted fst-italic mb-2">Posted on <%= @article.created_at.strftime("%d.%m.%Y") %>
+                      by <%= link_to @article.user.nickname, user_path(@article.user.id) %></div>
+                    <!-- Post categories-->
+                    <div class="badge bg-secondary text-decoration-none link-light"><%= @article.category&.name || "Unknown" %></div>
+                </header>
+                <!-- Preview image figure-->
+                <figure class="mb-4">
+                  <% if @article.picture? %>
+                    <%= image_tag(@article.picture.url, class: "img-fluid rounded") %>
+                  <% else %>
+                    <%= image_tag "unknown.png", height: "400px", width: "600px", class: "img-fluid rounded" %>
+                  <% end %>
+                   <!-- <img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /> -->
+                </figure>
+                <!-- Post content-->
+                <section class="mb-5">
+                    <p class="fs-5 mb-4"><%= @article.content %></p>
+                </section>
+                <% if user_signed_in? %>
+                <div class="votingBtn">
+                     <%= link_to vote_article_path(@article), class: "btn btn-xs btn-default", method: 'put', remote: true do %>
+                      <% if current_user.liked?(@article) %>
+                        <i class="fa-solid fa-heart"></i>
+                      <% else %>
+                        <i class="fa-regular fa-heart"></i>
+                      <% end %>
+                     <% end %>
+                     <span class="voteCount"><%= @article.get_likes.count %></span>
+                </div>
+                <% end %>
+            </article>
+        </div>
+
+            <div class="col-lg-4">
+                <!-- Categories widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Categories</div>
+                    <%= render 'layouts/categories' %>
+                </div>
+
+                <%= render 'layouts/top_articles' %>
+
+                <!-- Side widget-->
+                <div class="card mb-4">
+                    <div class="card-header">Side Widget</div>
+                    <div class="card-body"> <%= render 'layouts/sinoptik' %> </div>
+                </div>
+          </div>
+        </div>
+      </div>
