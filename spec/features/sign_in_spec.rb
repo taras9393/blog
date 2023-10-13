@@ -1,6 +1,12 @@
 require 'rails_helper'
 
 describe 'the login process', type: :feature do
+
+    before(:each) do
+       User.create(email: "qwerty@qwerty.com", password: "qwerty",
+        password_confirmation: "qwerty", nickname: "qwerty")
+    end
+  
   it 'successful login' do
     visit new_user_session_path
     fill_in 'Email', with: 'qwerty@qwerty.com'

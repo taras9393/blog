@@ -25,6 +25,13 @@ describe 'user creating', type: :feature do
 end
 
 describe 'article creating', type: :feature do
+
+    before(:each) do
+       User.create(email: "testadmin@admin.com", password: "qwerty",
+        password_confirmation: "qwerty", nickname: "testadmin", admin: true)
+        Category.create(name: "Nature")
+     end
+
   it 'should add new article to database' do
     expect do
      Article.create(
