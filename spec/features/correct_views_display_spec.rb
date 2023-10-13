@@ -1,6 +1,18 @@
 require 'rails_helper'
 
+
 describe 'getting all user list', type: :feature do
+
+  before(:each) do
+     User.create(email: "testadmin@admin.com", password: "qwerty",
+      password_confirmation: "qwerty", nickname: "testadmin", admin: true)
+  end
+
+  before(:each) do
+     User.create(email: "qwerty@qwerty.com", password: "qwerty",
+      password_confirmation: "qwerty", nickname: "qwerty")
+  end
+
   it 'should be forbidden for non-admin' do
     visit new_user_session_path
     fill_in 'Email', with: 'qwerty@qwerty.com'
@@ -21,6 +33,18 @@ describe 'getting all user list', type: :feature do
 end
 
 describe 'feature of adding new categories', type: :feature do
+
+    before(:each) do
+       User.create(email: "testadmin@admin.com", password: "qwerty",
+        password_confirmation: "qwerty", nickname: "testadmin", admin: true)
+    end
+
+    before(:each) do
+       User.create(email: "qwerty@qwerty.com", password: "qwerty",
+        password_confirmation: "qwerty", nickname: "qwerty")
+    end
+
+
   it 'should be available for admin-user' do
     visit new_user_session_path
     fill_in 'Email', with: 'testadmin@admin.com'
