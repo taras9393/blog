@@ -42,8 +42,7 @@ jobs:
           WITH_COVERAGE: true
           DISABLE_SPRING: 1
         run: |
-          bundle exec rails db:prepare
-          bundle exec rake test
+          bundle exec bin/rails db:test:prepare
 
       - name: Build and test with RSpec
         env:
