@@ -37,7 +37,7 @@ steps:
         run: |
           bundle install
 
-  - name: Setup database
+      - name: Setup database
         env:
           PG_DATABASE: postgres
           PG_HOST: localhost
@@ -50,7 +50,7 @@ steps:
           bundle exec rails db:prepare
           bundle exec rake test
 
-    - name: Build and test with RSpec
+      - name: Build and test with RSpec
         env:
           PG_DATABASE: postgres
           PG_HOST: localhost
@@ -60,8 +60,8 @@ steps:
         run: |
           bundle exec rspec spec
 
-    - name: Create Coverage Artifact
+      - name: Create Coverage Artifact
         uses: actions/upload-artifact@v2
         with:
           name: code-coverage
-          path: coverage/                
+          path: coverage/
