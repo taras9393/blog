@@ -10,14 +10,14 @@ jobs:
   test:
     runs-on: ubuntu-latest
 
-  services:
+    services:
       postgres:
         image: postgres:12
         env:
           POSTGRES_PASSWORD: postgres
         ports: ['5432:5432']
 
-steps:
+    steps:
       - uses: actions/checkout@v2
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1.80.0
