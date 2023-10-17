@@ -28,7 +28,7 @@ describe 'article creating', type: :feature do
 
     before(:each) do
        User.create(email: "testadmin@admin.com", password: "qwerty",
-        password_confirmation: "qwerty", nickname: "testadmin", admin: true)
+      password_confirmation: "qwerty", nickname: "testadmin", admin: true)
         Category.create(name: "Nature")
      end
 
@@ -55,6 +55,7 @@ describe 'article creating', type: :feature do
      )
    end.to change { Article.count }.by(0)
   end
+
 end
 
 describe 'article creating', type: :feature do

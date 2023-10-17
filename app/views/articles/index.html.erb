@@ -15,6 +15,7 @@
       <%= will_paginate @articles, renderer: WillPaginate::ActionView::BootstrapLinkRenderer %>
         <!-- Blog entries-->
         <div class="col-lg-8">
+          <h3>All articles<h3>
             <div class="row">
               <% @articles.each do |article| %>
                 <div class="col-lg-6">
