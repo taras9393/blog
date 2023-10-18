@@ -127,7 +127,7 @@ describe 'displaying NOT published articles', type: :feature do
     expect(page).to have_content 'No articles at this moment'
     visit article_path(@article.id)
     #response.should redirect_to(:controller => 'articles', :action => 'index')
-    expect(page).to have_content 'All articls'
+    expect(page).to have_content 'All articles'
   end
 
 end
