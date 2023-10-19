@@ -38,6 +38,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     redirect_to articles_path if @article.published_at.future?
+    @comments = @article.comments.all
   end
 
   def destroy

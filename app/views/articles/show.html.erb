@@ -23,8 +23,8 @@
                    <!-- <img class="img-fluid rounded" src="https://dummyimage.com/900x400/ced4da/6c757d.jpg" alt="..." /> -->
                 </figure>
                 <!-- Post content-->
-                <section class="mb-5">
-                    <p class="fs-5 mb-4"><%= @article.content %></p>
+                <section class="">
+                    <p class="fs-5"><%= @article.content %></p>
                 </section>
                 <% if user_signed_in? %>
                 <div class="votingBtn">
@@ -38,7 +38,9 @@
                      <span class="voteCount"><%= @article.get_likes.count %></span>
                 </div>
                 <% end %>
+                <%= render 'layouts/comments_form' %>
             </article>
+
         </div>
 
             <div class="col-lg-4">
