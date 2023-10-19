@@ -5,6 +5,7 @@ class Article < ApplicationRecord
 
   belongs_to :user
   belongs_to :category
+  has_many :comments
 
   mount_uploader :picture, PictureUploader
   acts_as_votable

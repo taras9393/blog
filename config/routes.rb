@@ -6,6 +6,7 @@ Rails.application.routes.draw do
     member do
       put 'vote'
     end
+    resources :comments
   end
   resources :categories
   resources :propositions do

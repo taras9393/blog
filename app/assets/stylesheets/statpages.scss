@@ -25,6 +25,22 @@
   background: #dee7f9;
 }
 
+.comment-bg {
+    background: #f7f7ee;
+}
+
+.comment-head {
+  background: #e0e0da;
+}
+
+.comment-form {
+  width: 440px;
+}
+
+.comment-text{
+	font-size: 14px;
+}
+
 .green-notice {
   color: green;
 }
@@ -41,8 +57,16 @@
   margin-left: 200px;
 }
 
+.ml-10 {
+  margin-left: 10px;
+}
+
 .ml-100 {
   margin-left: 100px;
+}
+
+.mr-400 {
+  margin-right: 400px;
 }
 
 .my-footer {
@@ -75,4 +99,13 @@
 
 .red-alert {
   color: red;
+}
+
+.user-feed{
+	 font-size: 14px;
+   margin-top: 12px;
+}
+
+.wish{
+	color:#35b69f;
 }

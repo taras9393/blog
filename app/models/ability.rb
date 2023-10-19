@@ -31,6 +31,6 @@ class Ability
     return unless user.present?
     can :destroy, Article, user_id: user.id
     can :edit, Article, user_id: user.id
-
+    can :destroy, Comment, user_id: user.id
   end
 end
