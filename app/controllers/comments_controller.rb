@@ -18,7 +18,7 @@ class CommentsController < ApplicationController
     @comment = @article.comments.find(params[:id])
     if can? :destroy, @comment
       @comment.destroy
-      redirect_to article_path(@article.id), notice: "Nice destroy"
+      redirect_to article_path(@article.id), notice: "Succesfully destroyed"
     else
       redirect_to article_path(@article.id), alert: "You can not delete other comments"
     end
