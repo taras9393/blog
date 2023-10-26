@@ -9,7 +9,7 @@ class CategoriesController < ApplicationController
 
   def show
     @category = Category.find(params[:id])
-    @articles = @category.articles.published
+    @articles = @category.articles.published.sort_by_created_at
   end
 
   def new
