@@ -1,24 +1,16 @@
-# README
+ Simple blog project
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Technologies
+ - Rails 5.2.8.1
+ - Ruby 2.7.2
+ - Bootstrap 5
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+ Functionality
+ - registration/login via Devise
+ - authorization via Cancancan
+ - search articles by titles
+ - filtering by categories
+ - pagination
+ - likes for articles with 'acts_as_votable'
+ - sorting articles by created_at and(or) rating(likes_count)
+ - testing with Rspec
