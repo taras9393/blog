@@ -14,3 +14,11 @@ Technologies
  - likes for articles with 'acts_as_votable'
  - sorting articles by created_at and(or) rating(likes_count)
  - testing with Rspec
+ - comments section for each article
+
+ Only admin can see list of all users and delete user.
+ Users can suggest new categories, but only admin can accept or decline those propositions.
+
+ Admin:   
+    email: admin@admin.com
+    password: foobar
